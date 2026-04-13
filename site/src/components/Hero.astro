@@ -1,0 +1,82 @@
+---
+import type { Locale } from '../content/site';
+import { content } from '../content/site';
+import heroImage from '../assets/images/hero.png';
+import { Image } from 'astro:assets';
+
+type Props = { locale: Locale };
+const { locale } = Astro.props;
+const c = content[locale];
+const base = locale === 'pl' ? '' : '/en';
+---
+
+<section class="hero">
+  <div class="container hero__inner">
+    <div class="hero__copy">
+      <span class="eyebrow">{c.hero.eyebrow}</span>
+      <h1>{c.hero.title}</h1>
+      <p class="lede">{c.hero.lede}</p>
+      <div class="hero__ctas">
+        <a class="btn btn--primary" href={`${base}/#contact`}>{c.hero.primaryCta}</a>
+        <a class="btn btn--ghost" href={`${base}/#services`}>{c.hero.secondaryCta}</a>
+      </div>
+    </div>
+    <div class="hero__media">
+      <Image
+        src={heroImage}
+        alt="Ewelina Gaballa"
+        widths={[320, 480, 640, 800]}
+        sizes="(min-width: 900px) 420px, 80vw"
+        class="hero__image"
+        loading="eager"
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-block: clamp(3rem, 7vw, 6rem);
+  }
+
+  .hero__inner {
+    display: grid;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+    grid-template-columns: 1fr;
+  }
+
+  .hero__copy {
+    max-width: 36rem;
+  }
+
+  .hero__ctas {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+
+  .hero__media {
+    order: -1;
+  }
+
+  .hero__image {
+    width: 100%;
+    max-width: 420px;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 30px 60px -40px rgba(31, 29, 27, 0.35);
+    margin-inline: auto;
+  }
+
+  @media (min-width: 900px) {
+    .hero__inner {
+      grid-template-columns: 1.15fr 1fr;
+    }
+
+    .hero__media {
+      order: 0;
+      justify-self: end;
+    }
+  }
+</style>

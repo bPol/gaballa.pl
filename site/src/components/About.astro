@@ -1,0 +1,108 @@
+---
+import type { Locale } from '../content/site';
+import { content } from '../content/site';
+import aboutImage from '../assets/images/about.png';
+import { Image } from 'astro:assets';
+
+type Props = { locale: Locale };
+const { locale } = Astro.props;
+const c = content[locale];
+---
+
+<section id="about" class="section section--alt">
+  <div class="container about">
+    <div class="about__media">
+      <Image
+        src={aboutImage}
+        alt="Ewelina Gaballa"
+        widths={[320, 480, 640]}
+        sizes="(min-width: 900px) 360px, 70vw"
+        class="about__image"
+      />
+    </div>
+    <div class="about__copy">
+      <span class="eyebrow">{c.about.eyebrow}</span>
+      <h2>{c.about.title}</h2>
+      {c.about.paragraphs.map((p) => <p>{p}</p>)}
+
+      <div class="strengths">
+        <h3>{c.about.strengthsTitle}</h3>
+        <ul>
+          {c.about.strengths.map((s) => <li>{s}</li>)}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+  }
+
+  .about__image {
+    width: 100%;
+    max-width: 360px;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 25px 50px -35px rgba(31, 29, 27, 0.4);
+    margin-inline: auto;
+  }
+
+  .strengths {
+    margin-top: 2rem;
+    padding: 1.5rem 1.75rem;
+    background: var(--color-bg);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-line);
+  }
+
+  .strengths h3 {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-sage-deep);
+  }
+
+  .strengths ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 0.5rem;
+    font-size: 0.9375rem;
+  }
+
+  .strengths li {
+    padding-left: 1.25rem;
+    position: relative;
+    color: var(--color-ink-soft);
+  }
+
+  .strengths li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.6em;
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--color-terra);
+  }
+
+  @media (min-width: 900px) {
+    .about {
+      grid-template-columns: 360px 1fr;
+    }
+
+    .about__image {
+      margin-inline: 0;
+    }
+  }
+</style>

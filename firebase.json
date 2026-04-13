@@ -1,16 +1,37 @@
 {
-  "hosting": {
-    "public": "public",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
-    ]
-  }
+  "hosting": [
+    {
+      "target": "main",
+      "public": "site/dist",
+      "cleanUrls": true,
+      "trailingSlash": false,
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "headers": [
+        {
+          "source": "**/*.@(js|css|woff2|webp|png|jpg|jpeg|svg)",
+          "headers": [
+            { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+          ]
+        },
+        {
+          "source": "**/*.html",
+          "headers": [
+            { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+          ]
+        }
+      ]
+    },
+    {
+      "target": "redirect",
+      "public": "redirect/public",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "redirects": [
+        {
+          "regex": "^/(?P<path>.*)$",
+          "destination": "https://gaballa.pl/:path",
+          "type": 301
+        }
+      ]
+    }
+  ]
 }

@@ -1,0 +1,28 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Services from '../components/Services.astro';
+import Tools from '../components/Tools.astro';
+import Credentials from '../components/Credentials.astro';
+import Testimonials from '../components/Testimonials.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+
+const locale = 'pl' as const;
+---
+
+<Base locale={locale}>
+  <Nav locale={locale} />
+  <main>
+    <Hero locale={locale} />
+    <About locale={locale} />
+    <Services locale={locale} />
+    <Tools locale={locale} />
+    <Credentials locale={locale} />
+    <Testimonials locale={locale} />
+    <Contact locale={locale} />
+  </main>
+  <Footer locale={locale} />
+</Base>

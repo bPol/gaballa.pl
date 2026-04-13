@@ -1,5 +1,13 @@
 {
   "projects": {
     "default": "gaballa-pl"
+  },
+  "targets": {
+    "gaballa-pl": {
+      "hosting": {
+        "main": ["gaballa-pl"],
+        "redirect": ["gaballa-redirect"]
+      }
+    }
   }
 }

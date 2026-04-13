@@ -1,0 +1,88 @@
+---
+import type { Locale } from '../content/site';
+import { content } from '../content/site';
+
+type Props = { locale: Locale };
+const { locale } = Astro.props;
+const c = content[locale];
+const base = locale === 'pl' ? '' : '/en';
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <span class="footer__name">Ewelina Gaballa</span>
+      <span class="footer__tag">{c.footer.tagline}</span>
+    </div>
+    <nav class="footer__links" aria-label="Footer">
+      <a href={`${base}/privacy`}>{c.footer.privacy}</a>
+      <a href={`${base}/cookies`}>{c.footer.cookies}</a>
+      <a href={`mailto:${c.contact.email}`}>{c.contact.email}</a>
+    </nav>
+    <div class="footer__rights">© {year} Ewelina Gaballa. {c.footer.rights}</div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--color-ink);
+    color: color-mix(in srgb, var(--color-bg) 85%, transparent);
+    padding-block: 3rem;
+    font-size: 0.875rem;
+  }
+
+  .footer__inner {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .footer__brand {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .footer__name {
+    font-family: var(--font-serif);
+    color: var(--color-bg);
+    font-size: 1.15rem;
+  }
+
+  .footer__tag {
+    color: color-mix(in srgb, var(--color-bg) 60%, transparent);
+  }
+
+  .footer__links {
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  .footer__links a {
+    color: color-mix(in srgb, var(--color-bg) 80%, transparent);
+    text-decoration: none;
+  }
+
+  .footer__links a:hover {
+    color: var(--color-bg);
+  }
+
+  .footer__rights {
+    color: color-mix(in srgb, var(--color-bg) 45%, transparent);
+    font-size: 0.8125rem;
+  }
+
+  @media (min-width: 700px) {
+    .footer__inner {
+      grid-template-columns: 1fr auto;
+      align-items: center;
+    }
+
+    .footer__rights {
+      grid-column: 1 / -1;
+      border-top: 1px solid color-mix(in srgb, var(--color-bg) 15%, transparent);
+      padding-top: 1.25rem;
+    }
+  }
+</style>

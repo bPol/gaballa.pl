@@ -1,0 +1,118 @@
+---
+import type { Locale } from '../content/site';
+import { content } from '../content/site';
+
+type Props = { locale: Locale };
+const { locale } = Astro.props;
+const c = content[locale];
+---
+
+<section id="testimonials" class="section section--alt">
+  <div class="container">
+    <div class="t__header">
+      <span class="eyebrow">{c.testimonials.eyebrow}</span>
+      <h2>{c.testimonials.title}</h2>
+      <p class="lede">{c.testimonials.lede}</p>
+    </div>
+
+    <ul class="t__grid">
+      {c.testimonials.items.map((t) => (
+        <li class="t-card">
+          <blockquote>
+            <p>{t.quote}</p>
+          </blockquote>
+          <footer>
+            <strong>{t.name}</strong>
+            <span>{t.role}</span>
+          </footer>
+        </li>
+      ))}
+      <li class="t-card t-card--empty" aria-hidden="true">
+        <p>{c.testimonials.addYours}</p>
+      </li>
+      <li class="t-card t-card--empty" aria-hidden="true">
+        <p>{c.testimonials.addYours}</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<style>
+  .t__header {
+    margin-bottom: 3rem;
+    max-width: var(--text-width);
+  }
+
+  .t__grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+  .t-card {
+    padding: 1.75rem 1.75rem 1.5rem;
+    background: var(--color-bg);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-md);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.25rem;
+  }
+
+  .t-card blockquote {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: 1.0625rem;
+    line-height: 1.55;
+    color: var(--color-ink);
+    font-style: italic;
+  }
+
+  .t-card blockquote p {
+    margin: 0;
+  }
+
+  .t-card blockquote::before {
+    content: '\201C';
+    display: block;
+    font-size: 2.5rem;
+    line-height: 0.4;
+    color: var(--color-terra);
+    margin-bottom: 0.75rem;
+  }
+
+  .t-card footer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    font-size: 0.875rem;
+  }
+
+  .t-card footer strong {
+    color: var(--color-ink);
+    font-weight: 500;
+  }
+
+  .t-card footer span {
+    color: var(--color-ink-mute);
+  }
+
+  .t-card--empty {
+    border-style: dashed;
+    background: transparent;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--color-ink-mute);
+    font-size: 0.875rem;
+  }
+
+  .t-card--empty p {
+    margin: 0;
+    max-width: 20ch;
+  }
+</style>

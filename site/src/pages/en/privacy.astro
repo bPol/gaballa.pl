@@ -1,0 +1,17 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import LegalPage from '../../components/LegalPage.astro';
+import { privacy } from '../../content/legal';
+
+const locale = 'en' as const;
+---
+
+<Base locale={locale} pageTitle={`${privacy.en.title} — Ewelina Gaballa`} path="/en/privacy">
+  <Nav locale={locale} />
+  <main>
+    <LegalPage page={privacy.en} />
+  </main>
+  <Footer locale={locale} />
+</Base>

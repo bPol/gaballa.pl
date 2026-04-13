@@ -1,0 +1,99 @@
+---
+import type { Locale } from '../content/site';
+import { content } from '../content/site';
+
+type Props = { locale: Locale };
+const { locale } = Astro.props;
+const c = content[locale];
+---
+
+<section id="services" class="section">
+  <div class="container">
+    <div class="services__header">
+      <span class="eyebrow">{c.services.eyebrow}</span>
+      <h2>{c.services.title}</h2>
+      <p class="lede">{c.services.lede}</p>
+    </div>
+
+    <ul class="services__grid">
+      {c.services.items.map((service) => (
+        <li class="service">
+          <div class="service__icon" aria-hidden="true">{service.icon}</div>
+          <h3>{service.title}</h3>
+          <ul class="service__list">
+            {service.items.map((item) => <li>{item}</li>)}
+          </ul>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .services__header {
+    margin-bottom: 3rem;
+    max-width: var(--text-width);
+  }
+
+  .services__grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+  .service {
+    padding: 1.75rem;
+    background: var(--color-bg);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-md);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+
+  .service:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px -30px rgba(31, 29, 27, 0.25);
+    border-color: color-mix(in srgb, var(--color-sage) 40%, var(--color-line));
+  }
+
+  .service__icon {
+    font-size: 1.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .service h3 {
+    margin: 0 0 0.75rem;
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+
+  .service__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.5rem;
+    font-size: 0.9375rem;
+    color: var(--color-ink-soft);
+  }
+
+  .service__list li {
+    padding-left: 1rem;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .service__list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.65em;
+    width: 4px;
+    height: 4px;
+    border-radius: 999px;
+    background: var(--color-sage);
+  }
+</style>

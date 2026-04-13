@@ -1,0 +1,17 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import LegalPage from '../../components/LegalPage.astro';
+import { cookies } from '../../content/legal';
+
+const locale = 'en' as const;
+---
+
+<Base locale={locale} pageTitle={`${cookies.en.title} — Ewelina Gaballa`} path="/en/cookies">
+  <Nav locale={locale} />
+  <main>
+    <LegalPage page={cookies.en} />
+  </main>
+  <Footer locale={locale} />
+</Base>

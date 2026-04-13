@@ -1,0 +1,44 @@
+---
+import '../styles/global.css';
+import type { Locale } from '../content/site';
+import { content } from '../content/site';
+
+type Props = {
+  locale: Locale;
+  pageTitle?: string;
+  pageDescription?: string;
+  path?: string;
+};
+
+const { locale, pageTitle, pageDescription, path = '' } = Astro.props;
+const c = content[locale];
+const htmlLang = locale;
+const title = pageTitle ?? c.meta.title;
+const description = pageDescription ?? c.meta.description;
+const canonical = `https://gaballa.pl${path}`;
+const alternate = locale === 'pl' ? `https://gaballa.pl/en${path}` : `https://gaballa.pl${path.replace(/^\/en/, '')}`;
+---
+
+<!doctype html>
+<html lang={htmlLang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="pl" href="https://gaballa.pl/" />
+    <link rel="alternate" hreflang="en" href="https://gaballa.pl/en/" />
+    <link rel="alternate" hreflang="x-default" href="https://gaballa.pl/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={locale === 'pl' ? 'pl_PL' : 'en_US'} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
