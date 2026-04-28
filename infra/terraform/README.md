@@ -72,6 +72,45 @@ terraform plan
 terraform apply
 ```
 
+## Email (Zoho Mail on `gaballa.pl`)
+
+MX records and the Zoho-aware SPF entry are managed here. Domain verification and DKIM are gated on variables you fill in once Zoho issues the values.
+
+Where to find each value in the Zoho admin console (`https://mailadmin.zoho.com` — this account is on the US region):
+
+1. **Domain verification code** (`zoho_verification_code`)
+   - Domains → click `gaballa.pl` (add it first if needed) → **Verify Domain** → choose **TXT method**.
+   - Zoho shows a value like `zoho-verification=zb67060752.zmverify.zoho.com`. Copy only the `zb67060752` part.
+   - Set it on the next apply, e.g.:
+     ```sh
+     terraform apply -var 'zoho_verification_code=zb67060752'
+     ```
+     Then click **Verify** in Zoho once DNS has propagated.
+
+2. **DKIM selector + public key** (`zoho_dkim_selector`, `zoho_dkim_public_key`)
+   - Email Configuration → **DKIM** → select `gaballa.pl` → **Add Selector** → pick a name (e.g. `zoho`).
+   - Zoho shows the TXT value `v=DKIM1; k=rsa; p=…`. Copy the whole string (no surrounding quotes).
+   - Set both vars on the next apply:
+     ```sh
+     terraform apply \
+       -var 'zoho_dkim_selector=zoho' \
+       -var 'zoho_dkim_public_key=v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEB...'
+     ```
+   - Long keys are auto-chunked into 255-char quoted segments inside one TXT record.
+
+For repeatable applies, put these into a (gitignored) `terraform.tfvars` instead of passing `-var` each time.
+
+### MX / SPF imports
+
+The pre-existing apex TXT record (Firebase + legacy SPF) needs to be imported before applying the SPF change; the MX record is new:
+
+```sh
+# Already covered by the first-time imports above:
+# terraform import google_dns_record_set.gaballa_pl_txt projects/gaballa-pl/managedZones/gaballa-pl/rrsets/gaballa.pl./TXT
+
+# MX is new — no import needed; will be created on apply.
+```
+
 ## State
 
 Local state for now. Before more than one person touches this, move to the commented-out GCS backend in `versions.tf` (you'll need to create the bucket first).

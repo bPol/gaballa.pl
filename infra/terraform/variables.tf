@@ -27,3 +27,21 @@ variable "firebase_hosting_ip" {
   type        = string
   default     = "199.36.158.100"
 }
+
+variable "zoho_verification_code" {
+  description = "Zoho domain verification code (e.g. 'zb67060752' — the bit before '.zmverify.zoho.com'). From Zoho Mail Admin Console → Domains → your domain → Verify (TXT method). Leave empty until issued."
+  type        = string
+  default     = ""
+}
+
+variable "zoho_dkim_selector" {
+  description = "Zoho DKIM selector (e.g. 'zoho'). From Zoho Mail Admin Console → Email Configuration → DKIM → Add Selector. Leave empty until issued."
+  type        = string
+  default     = ""
+}
+
+variable "zoho_dkim_public_key" {
+  description = "Zoho DKIM public key value as shown in the Zoho admin console (the 'v=DKIM1; k=rsa; p=…' string, no surrounding quotes). Leave empty until issued."
+  type        = string
+  default     = ""
+}
