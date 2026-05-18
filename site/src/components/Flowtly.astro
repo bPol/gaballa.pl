@@ -1,0 +1,360 @@
+---
+import type { Locale } from '../content/site';
+import { flowtly } from '../content/flowtly';
+import portrait from '../assets/images/about.png';
+import { Image } from 'astro:assets';
+
+type Props = { locale: Locale };
+const { locale } = Astro.props;
+const f = flowtly[locale];
+const base = locale === 'pl' ? '' : '/en';
+---
+
+<section class="flowtly">
+  <div class="container flowtly__panel">
+    <header class="flowtly__top">
+      <div class="flowtly__brandline">
+        <span class="flowtly__badge">{f.badge}</span>
+        <span class="flowtly__pair">{f.pair}</span>
+      </div>
+      <span class="wordmark">flowtly<span class="wordmark__dot">.</span></span>
+    </header>
+
+    <div class="flowtly__hero">
+      <p class="flowtly__lede">{f.lede}</p>
+      <h1 class="flowtly__headline">{f.headline}<em>{f.headlineAccent}</em></h1>
+    </div>
+
+    <div class="flowtly__cross">
+      <article class="fcard">
+        <div class="fcard__head">
+          <span class="fcard__num">{f.system.number}</span>
+          <span class="fcard__label">{f.system.label}</span>
+        </div>
+        <div class="fcard__body">
+          <span class="wordmark wordmark--lg">flowtly<span class="wordmark__dot">.</span></span>
+        </div>
+        <p class="fcard__text">{f.system.body}</p>
+      </article>
+
+      <div class="flowtly__x" aria-hidden="true">×</div>
+
+      <article class="fcard">
+        <div class="fcard__head">
+          <span class="fcard__num">{f.assistant.number}</span>
+          <span class="fcard__label">{f.assistant.label}</span>
+        </div>
+        <div class="fcard__body fcard__body--person">
+          <Image
+            src={portrait}
+            alt={f.portraitAlt}
+            widths={[96, 144, 192]}
+            sizes="96px"
+            class="fcard__photo"
+            loading="eager"
+          />
+          <span class="fcard__name">{f.assistant.name}</span>
+        </div>
+        <p class="fcard__text">{f.assistant.body}</p>
+      </article>
+    </div>
+
+    <div class="flowtly__package">
+      <span class="flowtly__pkglabel">{f.packageLabel}</span>
+      <div class="flowtly__chips">
+        <span class="chip chip--badge">{f.packageBadge}</span>
+        {f.packageChips.map((c) => <span class="chip">{c}</span>)}
+      </div>
+    </div>
+
+    <footer class="flowtly__closing">
+      <p class="flowtly__tagline">{f.closing.text}<em>{f.closing.accent}</em></p>
+      <div class="flowtly__closeright">
+        <span class="flowtly__closepair">{f.closing.brandPair}</span>
+        <span class="flowtly__closelinks">
+          <a href="https://flowtly.eu" target="_blank" rel="noopener noreferrer">flowtly.eu</a>
+          <span aria-hidden="true">/</span>
+          <a href={`${base}/`}>gaballa.pl</a>
+          <span aria-hidden="true">/</span>
+          <a href={`${base}/#contact`}>{f.closing.ctaLabel}</a>
+        </span>
+      </div>
+    </footer>
+  </div>
+</section>
+
+<style>
+  .flowtly {
+    background: var(--color-bg-alt);
+    padding-block: clamp(2.5rem, 6vw, 5rem);
+    min-height: calc(100vh - 4rem);
+    display: flex;
+    align-items: center;
+  }
+
+  .flowtly__panel {
+    width: 100%;
+  }
+
+  .flowtly__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: clamp(2rem, 5vw, 3.5rem);
+  }
+
+  .flowtly__brandline {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .flowtly__badge {
+    display: inline-block;
+    padding: 0.35rem 0.7rem;
+    border-radius: var(--radius-sm);
+    background: var(--color-sage-deep);
+    color: var(--color-bg);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .flowtly__pair {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-ink-mute);
+  }
+
+  .wordmark {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 1.4rem;
+    letter-spacing: -0.02em;
+    color: var(--color-ink);
+  }
+
+  .wordmark__dot {
+    color: var(--color-terra-deep);
+  }
+
+  .wordmark--lg {
+    font-size: clamp(1.75rem, 3vw, 2.4rem);
+  }
+
+  .flowtly__hero {
+    margin-bottom: clamp(2rem, 5vw, 3.5rem);
+  }
+
+  .flowtly__lede {
+    font-size: 1.1875rem;
+    color: var(--color-ink-mute);
+    margin: 0 0 0.75rem;
+    max-width: none;
+  }
+
+  .flowtly__headline {
+    margin: 0;
+    max-width: 18ch;
+  }
+
+  .flowtly__headline em {
+    font-style: italic;
+    color: var(--color-terra-deep);
+  }
+
+  .flowtly__cross {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    align-items: stretch;
+    position: relative;
+  }
+
+  .fcard {
+    background: var(--color-bg);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-lg);
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .fcard__head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+  }
+
+  .fcard__num {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--color-sage-deep);
+    letter-spacing: 0.02em;
+  }
+
+  .fcard__label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-ink-mute);
+  }
+
+  .fcard__body {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    min-height: 5.5rem;
+  }
+
+  .fcard__body--person {
+    gap: 1rem;
+  }
+
+  .fcard__photo {
+    width: 72px;
+    height: 72px;
+    border-radius: 999px;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .fcard__name {
+    font-family: var(--font-serif);
+    font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+    line-height: 1.15;
+  }
+
+  .fcard__text {
+    margin: 0;
+    color: var(--color-ink-soft);
+    font-size: 0.975rem;
+  }
+
+  .flowtly__x {
+    align-self: center;
+    justify-self: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    border: 1px solid var(--color-line);
+    background: var(--color-bg);
+    color: var(--color-sage-deep);
+    font-size: 1.1rem;
+  }
+
+  .flowtly__package {
+    margin-top: clamp(2rem, 5vw, 3.5rem);
+  }
+
+  .flowtly__pkglabel {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-ink-mute);
+    margin-bottom: 0.85rem;
+  }
+
+  .flowtly__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .chip {
+    display: inline-block;
+    padding: 0.5rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: color-mix(in srgb, var(--color-sage) 14%, var(--color-bg));
+    color: var(--color-sage-deep);
+  }
+
+  .chip--badge {
+    background: var(--color-ink);
+    color: var(--color-bg);
+  }
+
+  .flowtly__closing {
+    margin-top: clamp(2rem, 5vw, 3.5rem);
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--color-line);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .flowtly__tagline {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: clamp(1.25rem, 2.5vw, 1.7rem);
+    line-height: 1.2;
+  }
+
+  .flowtly__tagline em {
+    font-style: italic;
+    color: var(--color-terra-deep);
+  }
+
+  .flowtly__closeright {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    text-align: right;
+  }
+
+  .flowtly__closepair {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-ink-mute);
+  }
+
+  .flowtly__closelinks {
+    display: flex;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    color: var(--color-ink-mute);
+  }
+
+  .flowtly__closelinks a {
+    color: var(--color-sage-deep);
+    text-decoration: none;
+  }
+
+  .flowtly__closelinks a:hover {
+    color: var(--color-terra-deep);
+  }
+
+  @media (min-width: 800px) {
+    .flowtly__cross {
+      grid-template-columns: 1fr auto 1fr;
+      gap: 0;
+    }
+
+    .flowtly__x {
+      margin-inline: -1.375rem;
+      z-index: 1;
+    }
+  }
+</style>

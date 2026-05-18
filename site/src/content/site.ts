@@ -30,6 +30,7 @@ export type SiteContent = {
     credentials: string;
     testimonials: string;
     contact: string;
+    flowtly: string;
     langLabel: string;
     otherLang: string;
   };
@@ -86,6 +87,7 @@ export type SiteContent = {
     tagline: string;
     privacy: string;
     cookies: string;
+    certifiedBadge: string;
     rights: string;
   };
 };
@@ -93,6 +95,13 @@ export type SiteContent = {
 const EMAIL = 'ewelina.gaballa@gmail.com';
 const PHONE = '';
 const BOOK_URL = '#contact';
+
+export const business = {
+  legalName: 'Ewelina Gaballa',
+  nip: '7743092612',
+  regon: '544595992',
+  address: 'ul. Wierzbowa 6, 09-530 Gąbin',
+};
 
 export const content: Record<Locale, SiteContent> = {
   pl: {
@@ -108,6 +117,7 @@ export const content: Record<Locale, SiteContent> = {
       credentials: 'Certyfikaty',
       testimonials: 'Opinie',
       contact: 'Kontakt',
+      flowtly: 'Flowtly',
       langLabel: 'Język',
       otherLang: 'EN',
     },
@@ -292,6 +302,7 @@ export const content: Record<Locale, SiteContent> = {
       tagline: 'Executive & Virtual Assistant — PL / EN',
       privacy: 'Polityka prywatności',
       cookies: 'Cookies',
+      certifiedBadge: 'Certified Flowtly Practitioner',
       rights: 'Wszelkie prawa zastrzeżone.',
     },
   },
@@ -308,6 +319,7 @@ export const content: Record<Locale, SiteContent> = {
       credentials: 'Credentials',
       testimonials: 'Testimonials',
       contact: 'Contact',
+      flowtly: 'Flowtly',
       langLabel: 'Language',
       otherLang: 'PL',
     },
@@ -474,6 +486,7 @@ export const content: Record<Locale, SiteContent> = {
       tagline: 'Executive & Virtual Assistant \u2014 PL / EN',
       privacy: 'Privacy Policy',
       cookies: 'Cookies',
+      certifiedBadge: 'Certified Flowtly Practitioner',
       rights: 'All rights reserved.',
     },
   },
