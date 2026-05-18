@@ -83,6 +83,24 @@ const base = locale === 'pl' ? '' : '/en';
   </div>
 </section>
 
+<section class="fhelp section">
+  <div class="container">
+    <div class="fhelp__head">
+      <span class="eyebrow">{f.helps.eyebrow}</span>
+      <h2>{f.helps.title}</h2>
+      <p class="lede">{f.helps.intro}</p>
+    </div>
+    <div class="fhelp__grid">
+      {f.helps.points.map((p) => (
+        <article class="fhelp__point">
+          <h3>{p.heading}</h3>
+          <p>{p.body}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
 <style>
   .flowtly {
     background: var(--color-bg-alt);
@@ -355,6 +373,47 @@ const base = locale === 'pl' ? '' : '/en';
     .flowtly__x {
       margin-inline: -1.375rem;
       z-index: 1;
+    }
+  }
+
+  .fhelp__head {
+    max-width: var(--text-width);
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+  }
+
+  .fhelp__head h2 {
+    margin-bottom: var(--space-4);
+  }
+
+  .fhelp__grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 1fr;
+  }
+
+  .fhelp__point {
+    padding: 1.75rem;
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-md);
+  }
+
+  .fhelp__point h3 {
+    margin: 0 0 0.6rem;
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+
+  .fhelp__point p {
+    margin: 0;
+    color: var(--color-ink-soft);
+    font-size: 0.975rem;
+  }
+
+  @media (min-width: 700px) {
+    .fhelp__grid {
+      grid-template-columns: 1fr 1fr;
     }
   }
 </style>
