@@ -1,0 +1,22 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import Flowtly from '../components/Flowtly.astro';
+import { flowtly } from '../content/flowtly';
+
+const locale = 'pl' as const;
+---
+
+<Base
+  locale={locale}
+  pageTitle={flowtly.pl.meta.title}
+  pageDescription={flowtly.pl.meta.description}
+  path="/flowtly"
+>
+  <Nav locale={locale} />
+  <main>
+    <Flowtly locale={locale} />
+  </main>
+  <Footer locale={locale} />
+</Base>
