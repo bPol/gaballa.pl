@@ -92,7 +92,7 @@ export type SiteContent = {
   };
 };
 
-const EMAIL = 'ewelina.gaballa@gmail.com';
+const EMAIL = 'ewelina@gaballa.pl';
 const PHONE = '';
 const BOOK_URL = '#contact';
 
