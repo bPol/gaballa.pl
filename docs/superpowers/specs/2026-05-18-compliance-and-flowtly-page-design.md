@@ -5,13 +5,15 @@ Project: gaballa.pl (Astro site, PL + EN)
 
 ## Summary
 
-Two independent deliverables on the gaballa.pl site:
+Three deliverables on the gaballa.pl site:
 
 1. **Compliance** — add legally-required Polish business disclosure for a
    registered sole trader (JDG) and tighten the RODO/GDPR policy text.
 2. **Flowtly partnership page** — a new dedicated page promoting the
    "Flowtly × Gaballa" back-office service, rendered faithfully from the
    provided mockup, recolored to the site's palette.
+3. **Footer certification badge** — a small "Certified Flowtly Practitioner"
+   pill in the footer, on every page.
 
 Each deliverable is self-contained and can be implemented and reviewed
 independently.
@@ -175,6 +177,29 @@ stay as-is.
 
 ---
 
+## Deliverable C — Footer Flowtly certification badge
+
+A small "Certified Flowtly Practitioner" badge in the footer, present on
+every page. This is a real, awarded credential, so it is displayed as a
+factual certification.
+
+- **Form** — a compact bordered pill (pure HTML/CSS, no SVG seal): the small
+  `flowtly.` wordmark followed by the label `Certified Flowtly Practitioner`,
+  with a checkmark/dot accent. Styled to sit on the dark footer
+  (light text, subtle border).
+- **Label** — the credential name `Certified Flowtly Practitioner` is kept in
+  English in both locales (standard practice for certification titles); the
+  surrounding markup carries no other locale-specific copy.
+- **Link** — the pill links to the `/flowtly` page for the active locale
+  (`/flowtly` on PL, `/en/flowtly` on EN).
+- **Placement** — in `Footer.astro`, within the `footer__brand` block, below
+  the tagline. Distinct from the A1 legal disclosure line (NIP/REGON/address),
+  which remains a separate plain-text line.
+- **Content** — the label and link live in the `footer` scope of
+  `site.ts` so the component stays content-free.
+
+---
+
 ## Out of scope
 
 - Real NIP / REGON / address values (user supplies; placeholders shipped).
@@ -194,3 +219,5 @@ stay as-is.
 - Privacy policy (PL + EN) shows the controller disclosure plus the new
   server-logs and international-transfers sections.
 - Nav and footer `Flowtly` links resolve to the new page in both locales.
+- The "Certified Flowtly Practitioner" badge appears in the footer on every
+  page and links to `/flowtly` (PL) / `/en/flowtly` (EN).
