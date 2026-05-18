@@ -1,4 +1,5 @@
 import type { Locale } from './site';
+import { business } from './site';
 
 export type LegalPage = {
   title: string;
@@ -7,8 +8,8 @@ export type LegalPage = {
   sections: { heading: string; body: string[] }[];
 };
 
-const LAST_UPDATED_PL = 'Ostatnia aktualizacja: 13 kwietnia 2026';
-const LAST_UPDATED_EN = 'Last updated: 13 April 2026';
+const LAST_UPDATED_PL = 'Ostatnia aktualizacja: 18 maja 2026';
+const LAST_UPDATED_EN = 'Last updated: 18 May 2026';
 
 export const privacy: Record<Locale, LegalPage> = {
   pl: {
@@ -20,13 +21,13 @@ export const privacy: Record<Locale, LegalPage> = {
       {
         heading: 'Administrator danych',
         body: [
-          'Administratorem danych osobowych jest Ewelina Gaballa, prowadząca działalność jako niezależna wirtualna asystentka. Kontakt w sprawach ochrony danych: ewelina.gaballa@gmail.com.',
+          `Administratorem danych osobowych jest Ewelina Gaballa, prowadząca jednoosobową działalność gospodarczą, NIP ${business.nip}, REGON ${business.regon}, z siedzibą pod adresem ${business.address}. Kontakt w sprawach ochrony danych: ewelina.gaballa@gmail.com.`,
         ],
       },
       {
         heading: 'Zakres przetwarzanych danych',
         body: [
-          'Przetwarzamy wyłącznie dane, które przekazujesz nam dobrowolnie — np. imię i nazwisko, adres e-mail, numer telefonu, nazwę firmy oraz treść wiadomości, którą do nas kierujesz. Dane te są niezbędne do przygotowania oferty, prowadzenia korespondencji i realizacji usług.',
+          'Przetwarzamy wyłącznie dane, które przekazujesz nam dobrowolnie — np. imię i nazwisko, adres e-mail, numer telefonu, nazwę firmy oraz treść wiadomości, którą do nas kierujesz. Dane te są niezbędne do przygotowania oferty, prowadzenia korespondencji i realizacji usług. Podanie danych jest dobrowolne, jednak niezbędne do udzielenia odpowiedzi na zapytanie i realizacji usług.',
         ],
       },
       {
@@ -60,6 +61,24 @@ export const privacy: Record<Locale, LegalPage> = {
         ],
       },
       {
+        heading: 'Logi serwera',
+        body: [
+          'Serwis jest hostowany na platformie Firebase Hosting (Google Cloud). Serwer hostingu automatycznie zapisuje w logach standardowe dane techniczne — m.in. adres IP, datę i godzinę zapytania oraz typ przeglądarki — w celu zapewnienia bezpieczeństwa i poprawnego działania serwisu. Podstawą prawną jest uzasadniony interes administratora (art. 6 ust. 1 lit. f RODO).',
+        ],
+      },
+      {
+        heading: 'Przekazywanie danych poza EOG',
+        body: [
+          'Korzystamy z narzędzi dostawców (Google Workspace, Firebase Hosting), którzy mogą przetwarzać dane na serwerach poza Europejskim Obszarem Gospodarczym. W takich przypadkach przekazanie danych odbywa się na podstawie standardowych klauzul umownych zatwierdzonych przez Komisję Europejską lub innych mechanizmów zgodnych z RODO.',
+        ],
+      },
+      {
+        heading: 'Profilowanie i decyzje automatyczne',
+        body: [
+          'Nie podejmujemy decyzji w sposób zautomatyzowany i nie profilujemy osób, których dane dotyczą.',
+        ],
+      },
+      {
         heading: 'Zmiany polityki',
         body: [
           'Polityka może być aktualizowana. Aktualna wersja jest zawsze dostępna na tej stronie.',
@@ -76,13 +95,13 @@ export const privacy: Record<Locale, LegalPage> = {
       {
         heading: 'Data controller',
         body: [
-          'The data controller is Ewelina Gaballa, operating as an independent virtual assistant. For data protection matters: ewelina.gaballa@gmail.com.',
+          `The data controller is Ewelina Gaballa, operating as a registered sole trader (jednoosobowa działalność gospodarcza), NIP ${business.nip}, REGON ${business.regon}, registered address ${business.address}. For data protection matters: ewelina.gaballa@gmail.com.`,
         ],
       },
       {
         heading: 'Scope of data processed',
         body: [
-          'We only process data you voluntarily provide \u2014 for example your name, email address, phone number, company name and the content of the message you send us. This data is needed to prepare an offer, correspond with you and deliver services.',
+          'We only process data you voluntarily provide \u2014 for example your name, email address, phone number, company name and the content of the message you send us. This data is needed to prepare an offer, correspond with you and deliver services. Providing this data is voluntary but necessary to respond to your enquiry and deliver services.',
         ],
       },
       {
@@ -113,6 +132,24 @@ export const privacy: Record<Locale, LegalPage> = {
         heading: 'Security',
         body: [
           'We apply technical and organisational measures appropriate to the data processed \u2014 including HTTPS, multi-factor authentication, and access limited to people who need it.',
+        ],
+      },
+      {
+        heading: 'Server logs',
+        body: [
+          'The site is hosted on Firebase Hosting (Google Cloud). The hosting server automatically records standard technical data in its logs — including IP address, the date and time of the request, and browser type — to keep the site secure and working correctly. The legal basis is the legitimate interest of the controller (Art. 6(1)(f) GDPR).',
+        ],
+      },
+      {
+        heading: 'International transfers',
+        body: [
+          'We use provider tools (Google Workspace, Firebase Hosting) that may process data on servers outside the European Economic Area. Where this happens, the transfer relies on Standard Contractual Clauses approved by the European Commission or other GDPR-compliant mechanisms.',
+        ],
+      },
+      {
+        heading: 'Profiling and automated decisions',
+        body: [
+          'We do not make automated decisions and do not profile data subjects.',
         ],
       },
       {
