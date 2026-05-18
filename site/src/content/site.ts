@@ -16,6 +16,7 @@ export type Testimonial = {
   quote: string;
   name: string;
   role: string;
+  url?: string;
 };
 
 export type SiteContent = {
@@ -276,13 +277,32 @@ export const content: Record<Locale, SiteContent> = {
     testimonials: {
       eyebrow: 'Opinie',
       title: 'Co mówią ludzie, z którymi pracuję',
-      lede: 'Kolejne opinie pojawią się wkrótce — poniżej wybrane głosy od osób, z którymi miałam przyjemność współpracować.',
+      lede: 'Wybrane głosy od osób i firm, z którymi miałam przyjemność współpracować.',
       items: [
         {
           quote:
             'Ewelina to osoba, na której można polegać — rozumie kontekst, myśli o krok do przodu i sprawia, że skomplikowane rzeczy przestają być skomplikowane.',
           name: 'Hatem Badr',
           role: 'iMedical LLC',
+        },
+        {
+          quote:
+            'Współpraca z Eweliną to czysta przyjemność. Jest niesamowicie zorganizowana, wszystko działa płynnie, a ona zawsze wie, co dzieje się w każdym projekcie. Komunikacja z nią jest bezwysiłkowa — pomocna, niezawodna i naprawdę łatwa we współpracy. Jeśli szukasz kogoś, kto zapanuje nad każdym szczegółem bez tracenia ludzkiego podejścia — to właśnie ona.',
+          name: 'Daria Hartog',
+          role: 'UX & SEO Content Writer',
+        },
+        {
+          quote:
+            'Jedna z najbardziej niezawodnych i skutecznych wirtualnych asystentek, jakie poznałam. Od obsługi komunikacji po szczegółowe zadania administracyjne — Ewelina niezmiennie pracuje profesjonalnie, szybko i dokładnie. Gorąco polecam!',
+          name: 'Klaudia Rabizo',
+          role: 'Creative Project Manager',
+        },
+        {
+          quote:
+            'Pracuję z Eweliną od 2024 roku i nie raz uchroniła mnie przed lawiną prywatnej i zawodowej administracji oraz komunikacji. Wyjątkowo niezawodna.',
+          name: 'Bernhard Huber',
+          role: 'Strategy & Innovation',
+          url: 'https://consulting-huber.com',
         },
       ],
       addYours: 'Pracowaliśmy razem? Chętnie dodam Twoją opinię.',
@@ -460,13 +480,32 @@ export const content: Record<Locale, SiteContent> = {
     testimonials: {
       eyebrow: 'Testimonials',
       title: 'What people I work with say',
-      lede: 'More testimonials coming soon \u2014 below, a few voices from people I\u2019ve had the pleasure of working with.',
+      lede: 'A few voices from the people and companies I\u2019ve had the pleasure of working with.',
       items: [
         {
           quote:
             'Ewelina is someone you can rely on \u2014 she reads the context, thinks a step ahead, and makes complicated things stop being complicated.',
           name: 'Hatem Badr',
           role: 'iMedical LLC',
+        },
+        {
+          quote:
+            'Working with Ewelina was a real pleasure. She is incredibly organised, keeps everything running smoothly, and always knows what is happening across projects. Communication with her is effortless \u2014 helpful, reliable, and genuinely easy to work with. If you need someone who can stay on top of every detail without losing the human touch, she is the one.',
+          name: 'Daria Hartog',
+          role: 'UX & SEO Content Writer',
+        },
+        {
+          quote:
+            'One of the most reliable and efficient virtual assistants I have come across. From handling communication to detailed administrative tasks, Ewelina consistently delivers with professionalism, speed and accuracy. Highly recommended!',
+          name: 'Klaudia Rabizo',
+          role: 'Creative Project Manager',
+        },
+        {
+          quote:
+            'I have worked with Ewelina since 2024, and more than once she has kept my private and professional admin and communication from piling up on me. Highly reliable.',
+          name: 'Bernhard Huber',
+          role: 'Strategy & Innovation',
+          url: 'https://consulting-huber.com',
         },
       ],
       addYours: 'Worked with me? I\u2019d love to add your voice here.',

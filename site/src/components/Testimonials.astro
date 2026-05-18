@@ -23,13 +23,16 @@ const c = content[locale];
           </blockquote>
           <footer>
             <strong>{t.name}</strong>
-            <span>{t.role}</span>
+            {t.url ? (
+              <span>
+                <a href={t.url} target="_blank" rel="noopener noreferrer">{t.role}</a>
+              </span>
+            ) : (
+              <span>{t.role}</span>
+            )}
           </footer>
         </li>
       ))}
-      <li class="t-card t-card--empty" aria-hidden="true">
-        <p>{c.testimonials.addYours}</p>
-      </li>
       <li class="t-card t-card--empty" aria-hidden="true">
         <p>{c.testimonials.addYours}</p>
       </li>
