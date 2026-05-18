@@ -21,7 +21,7 @@ export const privacy: Record<Locale, LegalPage> = {
       {
         heading: 'Administrator danych',
         body: [
-          `Administratorem danych osobowych jest Ewelina Gaballa, prowadząca jednoosobową działalność gospodarczą, NIP ${business.nip}, REGON ${business.regon}, z siedzibą pod adresem ${business.address}. Kontakt w sprawach ochrony danych: ewelina.gaballa@gmail.com.`,
+          `Administratorem danych osobowych jest Ewelina Gaballa, prowadząca jednoosobową działalność gospodarczą, NIP ${business.nip}, REGON ${business.regon}, z siedzibą pod adresem ${business.address}. Kontakt w sprawach ochrony danych: ewelina@gaballa.pl.`,
         ],
       },
       {
@@ -51,7 +51,7 @@ export const privacy: Record<Locale, LegalPage> = {
       {
         heading: 'Twoje prawa',
         body: [
-          'Masz prawo do dostępu do swoich danych, ich sprostowania, usunięcia, ograniczenia przetwarzania, przenoszenia, a także wniesienia sprzeciwu wobec przetwarzania oraz skargi do Prezesa Urzędu Ochrony Danych Osobowych. Kontakt w tych sprawach: ewelina.gaballa@gmail.com.',
+          'Masz prawo do dostępu do swoich danych, ich sprostowania, usunięcia, ograniczenia przetwarzania, przenoszenia, a także wniesienia sprzeciwu wobec przetwarzania oraz skargi do Prezesa Urzędu Ochrony Danych Osobowych. Kontakt w tych sprawach: ewelina@gaballa.pl.',
         ],
       },
       {
@@ -95,7 +95,7 @@ export const privacy: Record<Locale, LegalPage> = {
       {
         heading: 'Data controller',
         body: [
-          `The data controller is Ewelina Gaballa, operating as a registered sole trader (jednoosobowa działalność gospodarcza), NIP ${business.nip}, REGON ${business.regon}, registered address ${business.address}. For data protection matters: ewelina.gaballa@gmail.com.`,
+          `The data controller is Ewelina Gaballa, operating as a registered sole trader (jednoosobowa działalność gospodarcza), NIP ${business.nip}, REGON ${business.regon}, registered address ${business.address}. For data protection matters: ewelina@gaballa.pl.`,
         ],
       },
       {
@@ -125,7 +125,7 @@ export const privacy: Record<Locale, LegalPage> = {
       {
         heading: 'Your rights',
         body: [
-          'You have the right to access your data, rectify it, erase it, restrict its processing, port it, object to processing, and lodge a complaint with the Polish Data Protection Authority (UODO). To exercise these rights: ewelina.gaballa@gmail.com.',
+          'You have the right to access your data, rectify it, erase it, restrict its processing, port it, object to processing, and lodge a complaint with the Polish Data Protection Authority (UODO). To exercise these rights: ewelina@gaballa.pl.',
         ],
       },
       {
